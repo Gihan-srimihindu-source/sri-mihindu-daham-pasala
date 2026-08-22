@@ -18,6 +18,19 @@
             color: #3e2723;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Logo එක සහ නම අතර පරතරය */
+            flex-wrap: wrap; /* ජංගම දුරකථන වලදී ලස්සනට පෙනීමට */
+        }
+        .logo {
+            width: 100px; /* ලෝගෝ එකේ ප්‍රමාණය (අවශ්‍ය නම් වෙනස් කරන්න) */
+            height: auto;
+            border-radius: 50%; /* ලෝගෝ එක රවුම් හැඩයක් ගැනීමට */
+            border: 3px solid white; /* ලෝගෝ එක වටා සුදු පාට ඉරක් */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         .container {
             max-width: 900px;
             margin: 30px auto;
@@ -87,6 +100,8 @@
 <body>
 
     <header>
+        <div class="header-content"></div>
+        <img src="image/logo.png.jpeg" alt="දහම් පාසල් ලෝගෝව" class="logo">
         <h1>ශ්‍රී මිහිඳු දහම් පාසල</h1>
         <p>10 ශ්‍රේණිය - අධ්‍යයන අංශය</p>
     </header>
