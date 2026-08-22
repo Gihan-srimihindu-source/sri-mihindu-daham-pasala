@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 ශ්‍රේණිය - ශ්‍රී මිහිඳු දහම් පාසල</title>
+    <style>
+        body {
+            font-family: 'Malithi Web', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffdf2;
+            text-align: center;
+        }
+        header {
+            background: #ffc107;
+            padding: 20px;
+            color: #3e2723;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        h2 { color: #d35400; border-bottom: 2px solid #ffc107; padding-bottom: 10px; }
+        
+        /* ආපසු යන බොත්තම */
+        .back-btn {
+            display: inline-block;
+            background-color: #3e2723;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover { background-color: #5d4037; }
+
+        /* අංශ 3 සඳහා වෙන් වූ කොටස් (Section Cards) */
+        .section-box {
+            background: #fff9e6;
+            border: 2px solid #ffe082;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .section-box h3 {
+            color: #b78103;
+            margin-top: 0;
+        }
+
+        /* PDF Iframe හැඩතල */
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            margin-top: 15px;
+            background: white;
+        }
+
+        /* ඩවුන්ලෝඩ් බොත්තම */
+        .download-btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover { background-color: #2ecc71; }
+        
+        .description {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ශ්‍රී මිහිඳු දහම් පාසල</h1>
+        <p>10 ශ්‍රේණිය - අධ්‍යයන අංශය</p>
+    </header>
+
+    <div class="container">
+        <!-- ආපසු මුල් පිටුවට යන බොත්තම -->
+        <a href="index.html" class="back-btn">⬅ ආපසු මුල් පිටුවට</a>
+
+        <h2>10 ශ්‍රේණියේ ඉගෙනුම් ද්‍රව්‍ය</h2>
+        <p class="description">පහත දැක්වෙන අංශ යටතේ අදාළ අච්චු පොත්, ප්‍රශ්න පත්‍ර සහ කෙටි සටහන් කියවිය හැක. අවශ්‍ය නම් ඩවුන්ලෝඩ් කරගන්න.</p>
+
+        <!-- 1. අච්චු පොත කොටස -->
+        <div class="section-box">
+            <h3>📖 1. අච්චු පොත (Textbook)</h3>
+            <p>දහම් පාසල් විෂය නිර්දේශයට අදාළ ප්‍රධාන පෙළපොත මෙහි ඇත.</p>
+            
+            <!-- PDF එක එතැනම පෙන්වීම -->
+            <iframe src="files/grade10/textbook.pdf">
+                ඔබගේ බ්‍රව්සරය PDF පෙන්වීමට සහාය නොදක්වයි.
+            </iframe><br>
+
+            <!-- ඩවුන්ලෝඩ් බොත්තම -->
+            <a href="files/grade10/Grade-10.pdf" class="download-btn" download>අච්චු පොත Download කරගන්න ⬇</a>
+        </div>
+
+        <!-- 2. ප්‍රශ්න පත්‍ර කොටස -->
+        <div class="section-box">
+            <h3>📝 2. ප්‍රශ්න පත්‍ර (Exam Papers)</h3>
+            <p>පසුගිය විභාග ප්‍රශ්න පත්‍ර සහ ආදර්ශ ප්‍රශ්න පත්‍ර.</p>
+            
+            <iframe src="files/grade10/papers.pdf">
+                ඔබගේ බ්‍රව්සරය PDF පෙන්වීමට සහාය නොදක්වයි.
+            </iframe><br>
+
+            <a href="files/grade10/papers.pdf" class="download-btn" download>ප්‍රශ්න පත්‍ර Download කරගන්න ⬇</a>
+        </div>
+
+        <!-- 3. කොට සටහන් කොටස -->
+        <div class="section-box">
+            <h3>📌 3. කොට සටහන් (Short Notes)</h3>
+            <p>පාඩම් පුනරීක්ෂණය සඳහා සකසන ලද කෙටි සටහන්.</p>
+            
+            <iframe src="files/grade10/shortnotes.pdf">
+                ඔබගේ බ්‍රව්සරය PDF පෙන්වීමට සහාය නොදක්වයි.
+            </iframe><br>
+
+            <a href="files/grade10/short10.txt" class="download-btn" download>කෙටි සටහන් Download කරගන්න ⬇</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -5,122 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ශ්‍රී මිහිඳු දහම් පාසල</title>
     <style>
-        /* වෙබ් අඩවියේ මූලික හැඩතල (Colors & Fonts) */
         body {
             font-family: 'Malithi Web', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: #fffdf2;
             text-align: center;
         }
-        header {
-            background-color: #d35400; /* බෞද්ධ කොඩියේ තැඹිලි පාටට සමාන වර්ණයක් */
-            color: white;
-            padding: 30px 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 { margin: 0; font-size: 2.5em; }
         
-        /* අන්තර්ගතය අඩංගු වන කොටු (Cards) වල හැඩතල */
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 10px;
+        /* Header එකේ සහ Logo එකේ හැඩතල */
+        header {
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            color: white;
+            padding: 25px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-bottom: 5px solid #d35400;
         }
-        .card {
-            background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Logo එක සහ නම අතර පරතරය */
+            flex-wrap: wrap; /* ජංගම දුරකථන වලදී ලස්සනට පෙනීමට */
+        }
+        .logo {
+            width: 100px; /* ලෝගෝ එකේ ප්‍රමාණය (අවශ්‍ය නම් වෙනස් කරන්න) */
+            height: auto;
+            border-radius: 50%; /* ලෝගෝ එක රවුම් හැඩයක් ගැනීමට */
+            border: 3px solid white; /* ලෝගෝ එක වටා සුදු පාට ඉරක් */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .header-text {
             text-align: left;
         }
-        .card h2 {
+        h1 { margin: 0; font-size: 2.8em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header-text p { margin: 5px 0 0 0; font-size: 1.2em; font-weight: bold; }
+        
+        /* අනිත් හැඩතල (කලින් ඒවාමයි) */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 15px;
+        }
+        .welcome-text {
             color: #d35400;
-            border-bottom: 2px solid #f0f2f5;
-            padding-bottom: 10px;
+            margin-bottom: 30px;
         }
-
-        /* පින්තූර සහ වීඩියෝ ලස්සන කිරීම */
-        img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
-            display: block;
-            margin: 15px auto;
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
-        .video-container {
-            text-align: center;
-            margin-top: 15px;
-        }
-        iframe {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-
-        /* ඩවුන්ලෝඩ් බොත්තමේ හැඩතල (Download Button) */
-        .download-btn {
-            display: inline-block;
-            background-color: #27ae60;
-            color: white;
-            padding: 12px 24px;
+        .class-card {
+            background: white;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 25px;
             text-decoration: none;
-            border-radius: 8px;
+            color: #333;
+            font-size: 1.4em;
             font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .download-btn:hover {
-            background-color: #2ecc71;
-        }
-
-        footer {
-            background-color: #2c3e50;
+        .class-card:hover {
+            background: #ffc107;
             color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 193, 7, 0.4);
+        }
+        footer {
+            background-color: #3e2723;
+            color: #ffc107;
             padding: 15px;
             margin-top: 40px;
+        }
+
+        /* Mobile Phone සඳහා විශේෂ හැඩතල */
+        @media (max-width: 600px) {
+            .header-text { text-align: center; }
+            h1 { font-size: 2em; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ලෝගෝව සහිත නව Header එක -->
     <header>
-        <h1>ශ්‍රී මිහිඳු දහම් පාසල</h1>
-        <p>ගුණ නැණ බෙලෙන් යුතු පරපුරක් දැයට දායාද කරමු</p>
+        <div class="header-content">
+            <!-- ඔබගේ ලෝගෝ එකේ නම logo.png නොවේ නම්, පහත තැන අදාළ නම දෙන්න -->
+            <img src="images/logo.png.jpeg" alt="දහම් පාසල් ලෝගෝව" class="logo">
+            
+            <div class="header-text">
+                <h1>ශ්‍රී මිහිඳු දහම් පාසල</h1>
+                <p>ගුණ නැණ බෙලෙන් යුතු පරපුරක් දැයට දායාද කරමු</p>
+            </div>
+        </div>
     </header>
 
     <div class="container">
+        <h2 class="welcome-text">පන්ති නිබන්ධන (Notes) ලබා ගැනීම සඳහා අදාළ ශ්‍රේණිය තෝරන්න</h2>
         
-        <!-- පින්තූරයක් දැමීමේ කොටස -->
-        <div class="card">
-            <h2>අපගේ දහම් පාසල</h2>
-            <p>පහත දැක්වෙන්නේ අප දහම් පාසලේ අලංකාර දර්ශනයකි.</p>
-            <!-- ඔබගේ පින්තූරයේ නම school.jpg නම් එය පහත ආකාරයට දෙන්න -->
-            <img src="images/logo.jpg" alt="දහම් පාසලේ පින්තූරයක්">
+        <div class="classes-grid">
+            <a href="grade1.html" class="class-card">1 ශ්‍රේණිය</a>
+            <a href="grade2.html" class="class-card">2 ශ්‍රේණිය</a>
+            <a href="grade3.html" class="class-card">3 ශ්‍රේණිය</a>
+            <a href="grade4.html" class="class-card">4 ශ්‍රේණිය</a>
+            <a href="grade5.html" class="class-card">5 ශ්‍රේණිය</a>
+            <a href="grade6.html" class="class-card">6 ශ්‍රේණිය</a>
+            <a href="grade7.html" class="class-card">7 ශ්‍රේණිය</a>
+            <a href="grade8.html" class="class-card">8 ශ්‍රේණිය</a>
+            <a href="grade9.html" class="class-card">9 ශ්‍රේණිය</a>
+            <a href="grade10.html" class="class-card">10 ශ්‍රේණිය</a>
         </div>
-
-        <!-- වීඩියෝ එකක් දැමීමේ කොටස (YouTube හරහා) -->
-        <div class="card">
-            <h2>දහම් පාසල් ගීතය</h2>
-            <p>අපගේ දහම් පාසල් ගීතය පහතින් ශ්‍රවණය කරන්න.</p>
-            <div class="video-container">
-                <!-- YouTube වීඩියෝවක Embed Code එක මෙතනට Paste කරන්න -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Fnfap6t6zdc?si=dosJ3zqXADcXm_xd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Notes / PDF ෆයිල් දැමීමේ කොටස -->
-        <div class="card">
-            <h2>ළමුන් සඳහා නිබන්ධන (Notes)</h2>
-            <p>1 ශ්‍රේණියේ සිට 11 ශ්‍රේණිය දක්වා සිසුන්ට අවශ්‍ය ආදර්ශ ප්‍රශ්න පත්‍ර සහ නිබන්ධන පහතින් බාගත (Download) කරගත හැක.</p>
-            <ul>
-                <li>අභිධර්මය මූලික කරුණු</li>
-                <li>බෞද්ධ ඉතිහාසය</li>
-            </ul>
-            <!-- ෆයිල් එකේ නම note-1.pdf නම් එය මෙහි දෙන්න -->
-            <a href="files/Grade-1.pdf" class="download-btn" download>PDF නිබන්ධනය Download කරන්න</a>
-        </div>
-
     </div>
 
     <footer>
