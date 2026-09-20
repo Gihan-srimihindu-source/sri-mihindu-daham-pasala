@@ -123,7 +123,179 @@
             <a href="grade10.html" class="class-card">10 ශ්‍රේණිය</a>
         </div>
     </div>
+<!-- Chat Widget CSS -->
+<style>
+  #chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: none; /* මුලින් හංගලා තියෙනවා */
+    flex-direction: column;
+    z-index: 1000;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  #chat-header {
+    background: #4a148c; /* ඔබේ වෙබ් අඩවියේ වර්ණයට වෙනස් කරගන්න */
+    color: white;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+  #chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9f9f9;
+  }
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  .user-message {
+    background: #e3f2fd;
+    margin-left: auto;
+    text-align: right;
+  }
+  .ai-message {
+    background: #fff;
+    border: 1px solid #eee;
+  }
+  #chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+  #chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+  }
+  #send-btn {
+    background: #4a148c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  #chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4a148c;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+  }
+  .typing { font-style: italic; color: #888; }
+</style>
 
+<!-- Chat Widget HTML -->
+<button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
+
+<div id="chat-widget">
+  <div id="chat-header">
+    <span>මිහිඳු AI ගුරුවරයා</span>
+    <span style="cursor:pointer;" onclick="toggleChat()">✖</span>
+  </div>
+  <div id="chat-messages">
+    <div class="message ai-message">ආයුබෝවන්! මම ශ්‍රී මිහිඳු දහම් පාසලේ AI ගුරුවරයා. ඔබට ඕනෑම දෙයක් අහන්න පුළුවන්.</div>
+  </div>
+  <div id="chat-input-area">
+    <input type="text" id="chat-input" placeholder="ඔබේ ප්‍රශ්නය ලියන්න..." onkeypress="handleKeyPress(event)">
+    <button id="send-btn" onclick="sendMessage()">යවන්න</button>
+  </div>
+</div>
+
+<!-- Chat Widget JavaScript -->
+<script>
+  // ඔබේ Vercel Backend එකේ ලින්ක් එක මෙතනට දාන්න
+  const API_URL = "https://daham-ai-backend-1-kb14qaq4c-gihan-srimihindu-source.vercel.app/api/chat";
+
+  function toggleChat() {
+    const widget = document.getElementById('chat-widget');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    if (widget.style.display === 'none' || widget.style.display === '') {
+      widget.style.display = 'flex';
+      toggleBtn.style.display = 'none';
+    } else {
+      widget.style.display = 'none';
+      toggleBtn.style.display = 'block';
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // User ගේ පණිවිඩය screen එකේ පෙන්නන්න
+    addMessage(message, 'user-message');
+    input.value = '';
+
+    // "Type කරමින්..." කියලා පෙන්නන්න
+    const typingId = addMessage('සිතමින්...', 'ai-message typing');
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      });
+
+      const data = await response.json();
+      
+      // "Type කරමින්..." ඉවත් කරන්න
+      document.getElementById(typingId).remove();
+
+      if (data.reply) {
+        addMessage(data.reply, 'ai-message');
+      } else {
+        addMessage('සමාවන්න, මට උත්තර දෙන්න බැරි වුණා.', 'ai-message');
+      }
+    } catch (error) {
+      document.getElementById(typingId).remove();
+      addMessage('සම්බන්ධතා දෝෂයක්. නැවත උත්සාහ කරන්න.', 'ai-message');
+    }
+  }
+
+  function addMessage(text, className) {
+    const messagesDiv = document.getElementById('chat-messages');
+    const msgDiv = document.createElement('div');
+    const id = 'msg-' + Date.now();
+    msgDiv.id = id;
+    msgDiv.className = 'message ' + className;
+    msgDiv.innerText = text;
+    messagesDiv.appendChild(msgDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    return id;
+  }
+</script>
     <footer>
         <p>&copy; 2026 ශ්‍රී මිහිඳු දහම් පාසල. සියලු හිමිකම් ඇවිරිණි.</p>
     </footer>
