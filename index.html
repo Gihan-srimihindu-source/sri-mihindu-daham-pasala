@@ -229,7 +229,7 @@
 <!-- Chat Widget JavaScript -->
 <script>
   // ඔබේ Vercel Backend එකේ ලින්ක් එක මෙතනට දාන්න
-  const API_URL = "https://daham-ai-backend-br05.vercel.app/api/chat";
+  const API_URL = "https://daham-ai-backend-v3be.vercel.app/api/chat";
 
   function toggleChat() {
     const widget = document.getElementById('chat-widget');
@@ -266,7 +266,7 @@
         body: JSON.stringify({ message: message })
       });
 
-      // මුලින්ම බලමු response එක හරිද කියලා
+      // 🚨 මෙතන තමයි වෙනස් කළේ: මුලින්ම බලනවා response එක හරිද කියලා
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
