@@ -249,7 +249,7 @@
     }
   }
 
-    async function sendMessage() {
+   async function sendMessage() {
     const input = document.getElementById('chat-input');
     const message = input.value.trim();
     if (!message) return;
@@ -266,7 +266,7 @@
         body: JSON.stringify({ message: message })
       });
 
-      // 🚨 මෙතන තමයි වෙනස් කළේ: මුලින්ම බලනවා response එක හරිද කියලා
+      // මුලින්ම බලමු response එක හරිද කියලා
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -282,10 +282,10 @@
       }
     } catch (error) {
       document.getElementById(typingId).remove();
+      // 🚨 මෙතන තමයි වෙනස් කළේ: දැන් ඇත්ත error එක පෙන්නනවා
       addMessage('දෝෂයක්: ' + error.message, 'ai-message');
     }
   }
-      
     
 
   function addMessage(text, className) {
