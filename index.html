@@ -249,16 +249,14 @@
     }
   }
 
-  async function sendMessage() {
+    async function sendMessage() {
     const input = document.getElementById('chat-input');
     const message = input.value.trim();
     if (!message) return;
 
-    // User ගේ පණිවිඩය screen එකේ පෙන්නන්න
     addMessage(message, 'user-message');
     input.value = '';
 
-    // "Type කරමින්..." කියලා පෙන්නන්න
     const typingId = addMessage('සිතමින්...', 'ai-message typing');
 
     try {
@@ -268,7 +266,25 @@
         body: JSON.stringify({ message: message })
       });
 
+      // මුලින්ම බලමු response එක හරිද කියලා
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
       const data = await response.json();
+      
+      document.getElementById(typingId).remove();
+
+      if (data.reply) {
+        addMessage(data.reply, 'ai-message');
+      } else {
+        addMessage('Error: ' + (data.error || 'Unknown error'), 'ai-message');
+      }
+    } catch (error) {
+      document.getElementById(typingId).remove();
+      addMessage('දෝෂයක්: ' + error.message, 'ai-message');
+    }
+  }
       
       // "Type කරමින්..." ඉවත් කරන්න
       document.getElementById(typingId).remove();
