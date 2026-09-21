@@ -286,19 +286,7 @@
     }
   }
       
-      // "Type කරමින්..." ඉවත් කරන්න
-      document.getElementById(typingId).remove();
-
-      if (data.reply) {
-        addMessage(data.reply, 'ai-message');
-      } else {
-        addMessage('සමාවන්න, මට උත්තර දෙන්න බැරි වුණා.', 'ai-message');
-      }
-    } catch (error) {
-      document.getElementById(typingId).remove();
-      addMessage('සම්බන්ධතා දෝෂයක්. නැවත උත්සාහ කරන්න.', 'ai-message');
-    }
-  }
+    
 
   function addMessage(text, className) {
     const messagesDiv = document.getElementById('chat-messages');
