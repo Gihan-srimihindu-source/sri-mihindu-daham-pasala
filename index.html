@@ -295,6 +295,11 @@
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
     return id;
   }
+    if (data.reply) {
+    addMessage(data.reply, 'ai-message');
+} else {
+    addMessage('Error: ' + (data.error || 'Unknown error'), 'ai-message');
+}
 </script>
     <footer>
         <p>&copy; 2026 ශ්‍රී මිහිඳු දහම් පාසල. සියලු හිමිකම් ඇවිරිණි.</p>
